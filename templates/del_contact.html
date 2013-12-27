@@ -1,0 +1,53 @@
+{% extends "admin/base.html" %}
+{% load i18n %}
+
+{% block title %}
+Contact Deletion Confirmation
+{% endblock %}
+
+{% block branding %}
+<h1 id="site-name"><font size=6px color="white"><b>{% trans 'Phonebook' %}</b></font></h1>
+{% endblock %}
+
+{% block breadcrumbs %}
+
+<div class="breadcrumbs">
+<a href="/home/">{% trans 'Home' %}</a>
+&rsaquo;
+{% trans 'Delete Contact' %}
+</div>
+
+{% endblock %}
+
+{% block content %}
+  
+  <br/>
+  <p>Are you sure you want to delete the following contact?</p><br/>
+  <center>
+ 
+  <table>
+  <tr>
+  <td>Name:</td><td>{{ contact.name }}</td>
+  </tr>
+  <tr>
+  <td>Phone Number:</td><td>{{ contact.ph_no }}</td>
+  </tr>
+  <tr>
+  <td>Email Address:</td><td>{{ contact.email }}</td>
+  </tr>
+  <tr>
+  <form action="" method="post">
+  <td align="right">
+  {%csrf_token%}
+  <input type="submit" value="Yes" name="yes">
+  </td>
+  <td align="left">
+  <input type="submit" value="No" name="no">
+  </td>
+  </form>
+  </tr>
+  </table> 
+ 
+  </center>   
+  
+{% endblock %}

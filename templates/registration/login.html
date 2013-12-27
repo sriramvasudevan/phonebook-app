@@ -1,0 +1,64 @@
+{% extends "admin/base.html" %}
+{% load i18n %}
+
+{% block title %}Phonebook{% endblock %}
+
+{% block branding %}
+
+<h1 id="site-name"><font size=6px color="white"><b>{% trans 'Phonebook' %}</b></font></h1>
+
+<!--
+<table width=100%>
+<tr>
+<td width=65%><br/><h1 id="site-name"><font size=6px color="white"><b>{% trans 'Phonebook' %}</b></font></h1></td>
+<form action="" method="post">
+<td><label for="username">Username:</label><br/><input name="username" type="text" value="" id="username" style="size:100px"></td>
+<td><label for="password">Password:</label><br/><input name="password" type="password" value="" id="password" style="size:100px"></td>
+<td><br/><input type="submit" value="Login"/></td>
+</tr>
+</form>
+</table>
+-->
+
+{% endblock %}
+
+{% block content %}
+      
+      
+      {% if form.errors %}
+      
+      <p class="error"><font color="red">Sorry, that's not a valid username or password</font></p>
+  
+      {% endif %}
+
+      
+      <h3>Login</h3>
+      <form action="" method="post">
+        {%csrf_token%}
+        <table>
+            <tr>
+                <td><label for="username">Username:</label></td>
+                <td><input name="username" type="text" value="" id="username" style="size:100px"></td>
+            </tr>
+            <tr>
+                <td><label for="password">Password:</label></td>
+                <td><input name="password" type="password" value="" id="password" style="size:100px"></td>
+            </tr>
+        <tr>
+        <td><input type="submit" value="Login"/></td>
+        </tr></table> 
+        <input type="hidden" name="next" value="/home/" />
+      </form>
+      <hr/>
+      <br />
+
+
+      OR
+
+      <h3>Register</h3>
+      <p><a href="/register/">Click here to register</a></p>
+
+   <hr/>
+
+{% endblock %}
+

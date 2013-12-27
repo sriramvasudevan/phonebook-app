@@ -1,0 +1,26 @@
+{% extends "admin/base_site.html" %}
+{% load i18n %}
+
+{% block breadcrumbs %}
+
+<div class="breadcrumbs">
+<a href="../">{% trans 'Home' %}</a>
+&rsaquo;
+{% trans 'Logout' %}
+</div>
+
+{% endblock %}
+
+{% block branding %}
+<h1 id="site-name"><font size=6px color="white"><b>{% trans 'Phonebook' %}</b></font></h1>
+{% endblock %}
+
+{% block content %}
+
+<br/>
+<p> You were logged in for: {{ loggedin_time }}</p>
+<p>{% trans "Thanks for using our services, have a pleasant day." %}</p>
+
+<p><a href="/"> {% trans 'Log in again' %}</a></p>
+
+{% endblock %}

@@ -1,0 +1,29 @@
+{% extends "admin/base.html" %}
+{% load i18n %}
+
+{% block branding %}
+<h1 id="site-name"><font size=6px color="white"><b>{% trans 'Phonebook' %}</b></font></h1>
+{% endblock %}
+
+{% block breadcrumbs %}
+
+<div class="breadcrumbs">
+<a href="../">{% trans 'Home' %}</a>
+&rsaquo;
+{% trans 'Register' %}
+</div>
+
+{% endblock %}
+
+{% block title %}Create an account{% endblock %}
+
+{% block content %}
+  <h1>Create an account</h1>
+
+  <form action="" method="post">
+      {%csrf_token%}
+      {{ form.as_p }}
+      <input type="submit" value="Create the account">
+      <input type="reset" value="Reset">
+  </form>
+{% endblock %}

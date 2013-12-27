@@ -1,0 +1,81 @@
+{% extends "admin/base.html" %}
+{% load i18n %}
+
+{% block title %}
+{% if create_contact %}
+Create a Contact
+{% endif %}
+{% if edit_contact %}
+Edit a Contact
+{% endif %}
+{% endblock %}
+
+{% block branding %}
+<h1 id="site-name"><font size=6px color="white"><b>{% trans 'Phonebook' %}</b></font></h1>
+{% endblock %}
+
+{% block breadcrumbs %}
+
+<div class="breadcrumbs">
+<a href="/home/">{% trans 'Home' %}</a>
+&rsaquo;
+{% if create_contact %}
+{% trans 'Add Contact' %}
+{% endif %}
+{% if edit_contact %}
+{% trans 'Edit Contact' %}
+{% endif %}
+</div>
+
+{% endblock %}
+
+{% block extrahead %}
+<script type="text/javascript">
+function toggle(source) {
+  checkboxes = document.getElementsByName('user');
+  for(var i in checkboxes)
+    checkboxes[i].checked = source.checked;
+}
+</script>
+{% endblock %}
+{% block content %}
+
+    {% if create_contact %}
+    <h1>Create a Contact</h1>
+    {% endif %}
+    {% if edit_contact %}
+    <h1>Edit a Contact</h1>
+    {% endif %}  
+  <br/>
+  
+  
+  <form action="" method="post">
+      {%csrf_token%}
+       <div class="field">
+            {{ form.name.errors }}
+            <label for="id_name">Name:</label>
+            {{ form.name }}
+            Required. 200 characters or fewer.
+        </div>
+        <div class="field">
+            {{ form.ph_no.errors }}
+            <label for="id_ph_no">Phone Number:</label>
+            {{ form.ph_no }}
+            
+        </div>
+        <div class="field">
+            {{ form.email.errors }}
+            <label for="id_email">Email Address:</label>
+            {{ form.email }}
+            200 characters or fewer.
+        </div>
+        {% if request.user.is_superuser %}
+        <div class="field">
+            {{ form.user.errors }}
+            <label for="id_user">User:</label>
+            <p>{{ form.user }}</p>
+        </div>
+        {% endif %}
+      <input type="submit" value="Done">
+  </form>
+{% endblock %}
